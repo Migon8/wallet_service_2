@@ -18,7 +18,7 @@ type Wallet struct {
 }
 
 type WalletRequest struct {
-	ValletID      uuid.UUID `json:"valletId"`
+	WalletID      uuid.UUID `json:"walletId"`
 	OperationType string    `json:"operationType"`
 	Amount        float64   `json:"amount"`
 }

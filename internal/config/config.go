@@ -8,14 +8,14 @@ import (
 )
 
 type Config struct {
-	host     string
-	port     string
-	user     string
-	password string
-	dbname   string
+	Host     string
+	Port     string
+	User     string
+	Password string
+	Dbname   string
 }
 
-func New() {
+func New() Config {
 
 	err := godotenv.Load()
 	if err != nil {
@@ -28,14 +28,16 @@ func New() {
 	password := os.Getenv("password")
 	dbname := os.Getenv("dbname")
 
-
+	
 	config := Config{
 
-		host: host,
-		port: port, 
-		user: user, 
-		password: password, 
-		dbname: dbname,
+		Host: host,
+		Port: port, 
+		User: user, 
+		Password: password, 
+		Dbname: dbname,
 	}
+
+	return config 
 
 }

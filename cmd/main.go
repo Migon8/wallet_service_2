@@ -5,17 +5,18 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	
+	"wallet_service_2/internal/config"
 )
+
 
 func main() {
 
-
 	config := config.New()
+
 
 	psqlInfo := fmt.Sprintf(
 		"host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
-		host, port, user, password, dbname,
+		config.Host, config.Port, config.User, config.Password, config.Dbname,
 	)
 
 	var err error
@@ -30,8 +31,14 @@ func main() {
 
 	log.Println("Подключение к БД успешно!")
 
-	// 👇 вот этот маршрут ДОЛЖЕН быть
+	// нам нужно получить список пользователей 
 	http.HandleFunc("/users", usersHandler)
+
+	// нам нужна ручка чтобы получить пользователя по id
+	// ...
+
+	// нам нужна ручка чтобы пользователя 
+	// ...
 
 	log.Println("Сервер слушает на порту 8080...")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
