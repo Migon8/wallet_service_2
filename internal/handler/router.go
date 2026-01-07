@@ -1,9 +1,10 @@
 package handler
 
 import (
-	"net/http"
 	"fmt"
+	"net/http"
 )
+
 func handleRequests() (w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
@@ -19,15 +20,15 @@ func handleRequests() (w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func handleGet(w http.RequestWriter, r *http.Request) {
+func handleGet(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "GET request received")
 }
 
-func handlePost(w http.RequestWriter, r *http.Request) {
+func handlePost(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "POST request received")
 }
 
-func handlePut(w http.RequestWriter, r *http.Request) {
+func handlePut(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "PUT request received")
 
 }
