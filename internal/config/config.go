@@ -28,16 +28,15 @@ func New() Config {
 	password := os.Getenv("password")
 	dbname := os.Getenv("dbname")
 
-	
 	config := Config{
 
-		Host: host,
-		Port: port, 
-		User: user, 
-		Password: password, 
-		Dbname: dbname,
+		Host:     host,
+		Port:     port,
+		User:     user,
+		Password: password,
+		Dbname:   dbname,
 	}
 
-	return config 
+	return config
 
 }

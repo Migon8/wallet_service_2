@@ -34,6 +34,12 @@ func main() {
 	// нам нужно получить список пользователей 
 	http.HandleFunc("/users", usersHandler)
 
+	err := http.ListenAndServe(":8080", nil)
+	if err !=nil {
+		fmt.Println("Ошибка запуска сервера:", err)   // добавил 07.01 
+	
+	}
+
 	// нам нужна ручка чтобы получить пользователя по id
 	// ...
 
