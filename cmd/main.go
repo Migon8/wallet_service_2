@@ -6,13 +6,12 @@ import (
 	"log"
 	"net/http"
 	"wallet_service_2/internal/config"
+	"wallet_service_2/internal/handler"
 )
-
 
 func main() {
 
 	config := config.New()
-
 
 	psqlInfo := fmt.Sprintf(
 		"host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
@@ -31,19 +30,14 @@ func main() {
 
 	log.Println("Подключение к БД успешно!")
 
-	// нам нужно получить список пользователей 
-	http.HandleFunc("/users", usersHandler)
-
-	err := http.ListenAndServe(":8080", nil)
-	if err !=nil {
-		fmt.Println("Ошибка запуска сервера:", err)   // добавил 07.01 
-	
-	}
+	http.HandleFunc("/users", handler.GetUsersHandler)
+	http.HandleFunc("/users/{id}", handler.GetUsersByIdHandler)
+	http.HandleFunc("/users/create", handler.MakeUsersHandler)
 
 	// нам нужна ручка чтобы получить пользователя по id
 	// ...
 
-	// нам нужна ручка чтобы пользователя 
+	// нам нужна ручка чтобы создать пользователя
 	// ...
 
 	log.Println("Сервер слушает на порту 8080...")

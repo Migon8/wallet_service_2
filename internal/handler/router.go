@@ -5,34 +5,33 @@ import (
 	"net/http"
 )
 
-func handleRequests() (w http.ResponseWriter, r *http.Request) {
-	switch r.Method {
-	case http.MethodGet:
-		handleGet(w, r)
-	case http.MethodPost:
-		handlePost(w, r)
-	case http.MethodPut:
-		handlePut(w, r)
-	case http.MethodDelete:
-		handleDelete(w, r)
-	default:
-		http.Error(w, "Метод не поддерживается", http.StatusMethodNotAllowed)
+func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
+
+	if r.Method == http.MethodGet {
+		w.Write("Список пользователей")
+	} else {
+		w.Write("Не правильный метод")
+
 	}
-}
-
-func handleGet(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "GET request received")
-}
-
-func handlePost(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "POST request received")
-}
-
-func handlePut(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "PUT request received")
 
 }
 
-func handleDelete(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "DELETE request received")
+func GetUsersByIdHandler(w http.ResponseWriter, r *http.Request) {
+
+	if r.Method == http.MethodGet {
+		w.Write("User id")
+	} else {
+		w.Write("Пользователя нет")
+	}
+
+}
+
+func MakeUsersHandler(w http.ResponseWriter, r *http.Request) {
+
+	if r.Method == http.MethodPost {
+		w.Write("Создали пользователя")
+	} else {
+		w.Write("Попробуйте заново")
+	}
+
 }
