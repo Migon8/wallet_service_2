@@ -12,7 +12,7 @@ const (
 )
 
 type Wallet struct {
-	ValletID  uuid.UUID `json:"valletId"`
+	WalletID  uuid.UUID `json:"walletId"`
 	Balance   float64   `json:"balance"`
 	UpdatedAt time.Time `json:"updatedAt"`
 }
